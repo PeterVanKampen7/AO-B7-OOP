@@ -5,7 +5,7 @@ Class PokeBag {
     private $bag = array();
 
     public function addToBag($pokemon){
-        if(count($this->bag) <= 10) return;
+        if(count($this->bag) >= 10) return;
         $this->bag[$pokemon->getName()] = $pokemon;
     }
 
