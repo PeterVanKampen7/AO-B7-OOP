@@ -19,9 +19,10 @@ echo 'Pikachu Health: ' . $pikachu->getHealth();
 
 echo '</br></br>Pokemon alive: ' . Pokemon::getAlive() . '</br></br>';
 
-echo 'Average HP: ' . Pokemon::avgHealth();
+echo 'Average HP: ' . Pokemon::avgHealth() . '</br></br>';
 
 $pokebag = new PokeBag;
 $pokebag->addToBag($pikachu);
+$pokebag->addToBag($charmeleon);
 
 print_r($pokebag->getBag());
