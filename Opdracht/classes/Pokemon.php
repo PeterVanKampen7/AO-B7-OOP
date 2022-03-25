@@ -1,6 +1,6 @@
 <?php
 
-Class Pokemon extends PokemonTemplate{
+abstract Class Pokemon{
 
     // Initiate fields
     private $name;
