@@ -2,6 +2,7 @@
 
 Class Pokemon {
 
+    // Initiate fields
     private $name;
     private $energyType;
     private $maxHealth;
@@ -12,6 +13,7 @@ Class Pokemon {
     static $alivePokemon = 0;
     static $aliveArray = array();
 
+    // Contrustor function
     public function __construct($name, $energyTypeName, $energyTypeValue, $maxHealth, $weaknessType, $weaknessMultiplier, $resistanceType, $resistanceValue) {
         $this->name = $name;
         $this->energyType = new EnergyType($energyTypeName, $energyTypeValue);
@@ -23,24 +25,34 @@ Class Pokemon {
         self::addAlive();    
     }
 
+    // Add a new attack to the Pokemon
     public function addAttack($attackName, $attackDamage){
         $this->attacks[$attackName] = new Attack($attackName, $attackDamage);
     }
 
+    // Make this pokemon attack another, takes the target and the attack as parameters
     public function attack($opponent, $attack) {
+        // Get the standard damage of the attack
         $damageDone = $attack->getDamage();
 
+        // Check if the target is weak to the damage type
         if($opponent->getWeakness()->getEnergyType() == $this->getEnergyType()->getType()) {
+            // If target is weak, multiply the damage by the weakness multiplier
             $damageDone *= $opponent->getWeakness()->getMultiplier();          
+        // Check if the target is resistant to the damage type
         } else if($opponent->getResistance()->getEnergyType() == $this->getEnergyType()->getType()) {
+            // If target is resistant subtract value from damage
             $damageDone -= $opponent->getResistance()->getValue();        
         }
 
+        // Subtract the damage from the opponents health
         $opponent->receiveDamage($damageDone);
 
+        // Output result of attack to the page
         echo "</br>{$this->getName()} attacks {$opponent->getName()} with {$attack->getName()} for {$damageDone} damage.</br>";
     }
 
+    // Function to have this Pokemon take damage, takes the damage as parameter
     public function receiveDamage($damage) {
         $this->health -= $damage;
         if($this->health <= 0){
