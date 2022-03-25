@@ -2,7 +2,7 @@
 
 abstract Class Pokemon{
 
-    // Initiate fields
+    // Fields
     private $name;
     private $energyType;
     private $maxHealth;
@@ -13,7 +13,7 @@ abstract Class Pokemon{
     static $alivePokemon = 0;
     static $aliveArray = array();
 
-    // Contrustor function
+    // Constructor
     public function __construct($name, $energyTypeName, $energyTypeValue, $maxHealth, $weaknessType, $weaknessMultiplier, $resistanceType, $resistanceValue) {
         $this->name = $name;
         $this->energyType = new EnergyType($energyTypeName, $energyTypeValue);
@@ -24,6 +24,8 @@ abstract Class Pokemon{
         $this->addToList();
         self::addAlive();    
     }
+
+    // Methods
 
     // Add a new attack to the Pokemon
     public function addAttack($attackName, $attackDamage){
