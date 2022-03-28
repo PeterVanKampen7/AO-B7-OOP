@@ -8,7 +8,7 @@ Class Weakness {
 
     // Constructor
     public function __construct($type, $multiplier){
-        $this->energyType = $type;
+        $this->energyType = new EnergyType($type, 0);
         $this->multiplier = $multiplier;
     }
 

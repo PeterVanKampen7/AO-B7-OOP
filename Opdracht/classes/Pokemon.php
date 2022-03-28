@@ -38,11 +38,11 @@ abstract Class Pokemon{
         $damageDone = $attack->getDamage();
 
         // Check if the target is weak to the damage type
-        if($opponent->getWeakness()->getEnergyType() == $this->getEnergyType()->getType()) {
+        if($opponent->getWeakness()->getEnergyType()->getType() == $this->getEnergyType()->getType()) {
             // If target is weak, multiply the damage by the weakness multiplier
             $damageDone *= $opponent->getWeakness()->getMultiplier();          
         // Check if the target is resistant to the damage type
-        } else if($opponent->getResistance()->getEnergyType() == $this->getEnergyType()->getType()) {
+        } else if($opponent->getResistance()->getEnergyType()->getType() == $this->getEnergyType()->getType()) {
             // If target is resistant subtract value from damage
             $damageDone -= $opponent->getResistance()->getValue();        
         }
