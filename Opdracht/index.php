@@ -14,19 +14,30 @@ $charmeleon = new Charmeleon('Char');
 
 // Pikachu attacks Charmeleon, echo's added for front end clarity
 echo '<br>Charmeleon Health: ' . $charmeleon->getHealth();
+echo '</br>' . $pikachu->getName() . ' attacks ' . $charmeleon->getName() . ' with ' . $pikachu->getAttacks()['Electric Punch']->getName() . '</br>';
 $pikachu->attack($charmeleon, $pikachu->getAttacks()['Electric Punch']);
 echo 'Charmeleon Health: ' . $charmeleon->getHealth();
 
 // Charmeleon attacks Pikachu, echo's added for front end clarity
 echo '</br><br>Pikachu Health: ' . $pikachu->getHealth();
+echo '</br>' . $charmeleon->getName() . ' attacks ' . $pikachu->getName() . ' with ' . $charmeleon->getAttacks()['Flare']->getName() . '</br>';
+$charmeleon->attack($pikachu, $charmeleon->getAttacks()['Flare']);
+echo 'Pikachu Health: ' . $pikachu->getHealth();
+
+echo '</br></br>Pokemon alive: ' . Pokemon::getAlive() . '</br></br>';
+
+// What is the average Health of all Pokemon
+echo 'Average HP: ' . Pokemon::avgHealth() . '</br></br>';
+
+echo '</br>Pikachu Health: ' . $pikachu->getHealth();
+echo '</br>' . $charmeleon->getName() . ' attacks ' . $pikachu->getName() . ' with ' . $charmeleon->getAttacks()['Flare']->getName() . '</br>';
 $charmeleon->attack($pikachu, $charmeleon->getAttacks()['Flare']);
 echo 'Pikachu Health: ' . $pikachu->getHealth();
 
 // How many Pokemon are alive
 echo '</br></br>Pokemon alive: ' . Pokemon::getAlive() . '</br></br>';
 
-// What is the average Health of all Pokemon
-echo 'Average HP: ' . Pokemon::avgHealth() . '</br></br>';
+
 
 // Make a new PokeBag
 $pokebag = new PokeBag;

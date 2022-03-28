@@ -49,9 +49,6 @@ abstract Class Pokemon{
 
         // Subtract the damage from the opponents health
         $opponent->receiveDamage($damageDone);
-
-        // Output result of attack to the page
-        echo "</br>{$this->getName()} attacks {$opponent->getName()} with {$attack->getName()} for {$damageDone} damage.</br>";
     }
 
     // Function to have this Pokemon take damage, takes the damage as parameter
