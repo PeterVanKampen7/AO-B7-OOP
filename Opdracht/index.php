@@ -5,12 +5,28 @@ spl_autoload_register(function ($class_name) {
     include 'classes/' . $class_name . '.php';
 });
 
+// Create necessary objects
+
+// Energy types
+$fire = new EnergyType('Fire', 0);
+$water = new EnergyType('Water', 0);
+$lightning = new EnergyType('Lightning', 0);
+$fighting = new EnergyType('Fighting', 0);
+
+// Weaknesses
+$fireWeakness = new Weakness($fire, 1.5);
+$waterWeakness = new Weakness($water, 2);
+
+// Resistances
+$fightingResistance = new Resistance($fighting, 20);
+$lightningResistance = new Resistance($lightning, 10);
+
 // How many Pokemon are alive
 echo 'Pokemon alive: ' . Pokemon::getAlive() . '</br>';
 
 // Make two pokemons: Pikachu and Charmeleon
-$pikachu = new Pikachu('Pika');
-$charmeleon = new Charmeleon('Char');
+$pikachu = new Pikachu('Pika', $lightning, $fireWeakness, $fightingResistance);
+$charmeleon = new Charmeleon('Char', $fire, $waterWeakness, $lightningResistance );
 
 // Pikachu attacks Charmeleon, echo's added for front end clarity
 echo '<br>Charmeleon Health: ' . $charmeleon->getHealth();

@@ -8,7 +8,7 @@ Class Resistance {
 
     // Constructor
     public function __construct($energyType, $value){
-        $this->energyType = new EnergyType($energyType, 0);
+        $this->energyType = $energyType;
         $this->value = $value;
     }
 

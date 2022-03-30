@@ -14,14 +14,14 @@ abstract Class Pokemon{
     static $aliveArray = array();
 
     // Constructor
-    public function __construct($name, $energyTypeName, $energyTypeValue, $maxHealth, $weaknessType, $weaknessMultiplier, $resistanceType, $resistanceValue) {
+    public function __construct($name, $energyType, $maxHealth, $weakness, $resistance) {
         $this->name = $name;
-        $this->energyType = new EnergyType($energyTypeName, $energyTypeValue);
+        $this->energyType = $energyType;
         $this->maxHealth = $maxHealth;
         $this->health = $this->maxHealth;
-        $this->weakness = new Weakness($weaknessType, $weaknessMultiplier);
-        $this->resistance = new Resistance($resistanceType, $resistanceValue);
-        $this->addToList();
+        $this->weakness = $weakness;
+        $this->resistance = $resistance;
+        self::addToList($this);
         self::addAlive();    
     }
 
@@ -103,8 +103,8 @@ abstract Class Pokemon{
         self::$alivePokemon--;
     }
 
-    public function addToList(){
-        array_push(self::$aliveArray, $this);
+    public static function addToList($pokemon){
+        array_push(self::$aliveArray, $pokemon);
     }
 
     public static function avgHealth(){
